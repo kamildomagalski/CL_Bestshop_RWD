@@ -1,0 +1,110 @@
+.stats {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 50px;
+
+        h2 {
+            font-size: 36px;
+            line-height: 42px;
+            font-weight: 400;
+            margin: 50px 0 25px;
+            text-align: center;
+
+            @include desktop {
+                margin: 100px 0;
+            }
+        }
+    }
+}
+
+.stats-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    @include desktop() {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.stats-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    // height: 140px;
+    width: 170px;
+    margin-bottom: 25px;
+    position: relative;
+    @include desktop{
+        margin-bottom: 121px;
+    }
+
+    .bg-circle {
+        width: 63px;
+        height: 63px;
+        border-radius: 50%;
+    }
+
+    &:nth-child(1) {
+        .bg-circle {
+            background: #FB3B64;
+        }
+
+        img {
+            position: absolute;
+            right: 42px;
+            top: 3px;
+        }
+
+    }
+
+    &:nth-child(2) {
+        .bg-circle {
+            background: #08A6E4;
+        }
+
+        img {
+            position: absolute;
+            right: 30px;
+            top: 14px;
+        }
+    }
+
+    &:nth-child(3) {
+        .bg-circle {
+            background: #55DFB4;
+        }
+
+        img {
+            position: absolute;
+            right: 30px;
+            top: 6px;
+        }
+    }
+
+    p {
+        &:nth-child(3) {
+            font-size: 20px;
+            line-height: 24px;
+            font-weight: 800;
+            padding: 14px 0 19px;
+            @include desktop{
+                padding: 22px 0 19px;
+            }
+        }
+
+        &:nth-child(4) {
+            font-size: 17px;
+            line-height: 20px;
+            font-weight: 400;
+            color: #A5A5A5;
+            text-align: center;
+        }
+    }
+
+}

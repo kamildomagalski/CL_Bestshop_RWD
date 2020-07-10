@@ -1,0 +1,30 @@
+.opening {
+    background-image: url(../../assets/Background.png);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size:  auto 50%;
+    height: calc(100vh - 70px);
+}
+
+.opening .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        font-family: $font-primary;
+        font-size: 49px;
+        font-weight: 400;
+        line-height: 57px;
+        padding-top: 130px;
+    }
+
+    p {
+        font-family: $font-secondary;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 22px;
+        padding: 20px 0 38px;
+        text-align: center;
+    }
+}
