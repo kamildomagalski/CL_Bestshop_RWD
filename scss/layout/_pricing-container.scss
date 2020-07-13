@@ -12,6 +12,37 @@
   font-weight: 400;
   
 }
+.pricing-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include desktop(800px){
+    flex-direction: row;
+    justify-content: center;
+    .professional-box{
+      margin: 50px 58px;
+    }
+    .pricing-card{
+      flex-direction: column;
+      justify-content: center;
+    }
+    .price{
+      margin: 34px auto;
+    }
+    .basic-list{
+      margin: 61px auto 33px;
+      text-align: center;
+    }
+    .professional-list{
+      margin: 69px auto 30px;
+      text-align: center;
+    }
+    .premium-list{
+      margin: 50px auto 30px;
+      text-align: center;
+    }
+  }
+}
 
 .pricing-box{
   display: flex;
@@ -24,7 +55,15 @@
 .basic-box{
   border: 1px solid $color-redish;
   min-width: 293px;
-  
+  @media screen and (min-width: 600px){
+    min-width: 400px;
+  }
+  @include desktop(800px){
+    min-width: 190px;
+  }
+  @include desktop (1300px){
+    min-width: 372px;
+  }
 }
 .pricing-card{
   display: flex;
@@ -101,7 +140,15 @@
   margin: 54px auto;
   min-width: 339px;
   box-shadow: 5px 10px 27px #07ACE629;
-
+  @media screen and (min-width: 600px) and (max-width: 799px){
+    min-width: 444px;
+  }
+  @include desktop(800px){
+    min-width: 234px;
+  }
+  @include desktop (1300px){
+    min-width: 405px;
+  }
 }
 .price-offer{
   font-family: $font-primary;
@@ -140,6 +187,15 @@
 .premium-box{
   border: 1px solid $color-green;
   min-width: 293px;
+  @media screen and (min-width: 600px){
+    min-width: 400px;
+  }
+  @include desktop(800px){
+    min-width: 190px;
+  }
+  @include desktop (1300px){
+    min-width: 372px;
+  }
 }
 
 .price-premium{
