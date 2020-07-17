@@ -1,82 +1,152 @@
 .header {
     box-shadow: 0 3px 6px #00000029;
-    
+
 }
 
-.header .container{
+.header .container {
     display: flex;
 }
 
-.navbar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.navbar {
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: center;
     width: 100%;
-    height: 70px;
+    // height: 70px;
+    @include desktop{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
 
-.logo{
+.header-logo {
     font-family: $font-primary;
     font-size: 32px;
     line-height: 37px;
     font-weight: 300;
     color: $color-primary;
     text-decoration: none;
-
+    float: left;
+    margin: 16px 0 17px;
 }
-.nav{
-    display: none;
-    .nav-list{
-        display: flex;
-        li{
-            display: flex;
-            justify-content: center;
-            margin-left: 25px;
-            @include desktop(1000px){
-                padding-left: 75px;
-            }
-        }
-        a{
-            display: inline-block;
-            font-family: $font-secondary;
-            font-size: 11px;
-            line-height: 15px;
-            font-weight: 700;
-            color: $color-grey;
-            text-decoration: none;
-            padding: 28px 10px 24px;
-            box-sizing: border-box;
-            border-bottom: 3px solid transparent;
 
-            &:hover{
+.menu {
+    list-style: none;
+    overflow: hidden;
+    background-color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    clear: both;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+    @include desktop{
+        display: flex;
+        flex-direction: row;
+        // clear: none;
+        // float: right;
+        max-height: none;
+        max-width: 500pz;
+    }
+}
+
+.menu-element {
+    @include desktop{
+        margin-left: 36px
+        // float: left;
+    }
+    @include desktop(850px){
+        margin-left: 76px;
+    }
+    a {
+        display: block;
+        // padding: 20px 20px;
+        font-family: $font-secondary;
+        font-size: 11px;
+        line-height: 15px;
+        font-weight: 700;
+        color: $color-grey;
+        text-decoration: none;
+        box-sizing: border-box;
+        padding-bottom: 14px;
+        
+        @include desktop {
+            border-bottom: 3px solid transparent;
+            padding: 28px 10px 24px;
+
+            &:hover {
                 color: #000;
                 border-bottom: 3px solid $color-primary;
             }
         }
-
-    }
-    @include desktop {
-        display: flex;
     }
 }
 
-.burger-menu{
-    div{
-        width: 20px;
-        height: 2px;
-        background: $color-primary;
-        &:nth-child(2){
-            margin: 4px 0;
-        }
-    }
+// hamburger menu icon 
+.menu-icon {
+    cursor: pointer;
+    display: block;
+    float: right;
+    padding: 28px 0px 28px 20px;
+    position: relative;
+    user-select: none;
+    margin-top: 10px;
     @include desktop{
         display: none;
     }
-    &:active{
-        div{
-            width: 25px;
-            height: 3px;
-            background: rgba($color: $color-primary, $alpha: 2.0);
+}
+
+.navicon {
+    display: block;
+    height: 3px;
+    width: 30px;
+    position: relative;
+    background: $color-primary;
+    transition: background 0.2s ease-out;
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        background: $color-primary;
+        height: 100%;
+        position: absolute;
+        transition: all .2s ease-out;
+        width: 100%;
+        top: -8px;
+    }
+
+    &::after {
+        top: 8px;
+    }
+}
+
+.menu-btn {
+    display: none;
+
+    &:checked~.menu {
+        max-height: 270px;
+    }
+}
+
+// burger icon animation
+
+.menu-btn:checked~.menu-icon {
+    .navicon {
+        background: transparent;
+
+        &::before {
+            transform: rotate(-45deg);
         }
+
+        &::after {
+            transform: rotate(45deg);
+        }
+    }
+
+    &:not(.steps) .navicon::before,
+    &:not(.steps) .navicon::after {
+        top: 0;
     }
 }
