@@ -4,6 +4,7 @@
   @include desktop() {
     padding: 30px 15px;
   }
+
   h2 {
     font-family: $font-primary;
     font-size: 3.6rem;
@@ -12,14 +13,26 @@
     margin: 50px 0 25px;
     text-align: center;
   }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    @include desktop() {
+      flex-direction: row;
+    }
+  }
+
   &-columns {
     max-width: 865px;
     margin: 50px auto 0;
     display: block;
     @include desktop() {
+      width: 50%;
+      margin: 50px 0 0;
       display: flex;
     }
   }
+
   &-form {
     width: 100%;
     margin-right: 20px;
@@ -29,19 +42,21 @@
     }
 
   }
+
   &-input input,
   &-select .select-input {
     color: $color-grey;
     width: 100%;
     border-radius: 6px;
     border: 1px solid $color-primary;
-    padding: 12px 20px ;
+    padding: 12px 20px;
     line-height: 1.8rem;
     font-size: 1.3rem;
     box-shadow: 0px 3px 6px $color-primary-shadow;
     margin-bottom: 20px;
     background-color: $color-white;
   }
+
   &-input {
     input {
       &::placeholder {
@@ -53,8 +68,10 @@
       }
     }
   }
+
   &-select {
     position: relative;
+
     .select-input {
       position: relative;
       //height: 40px;
@@ -66,9 +83,10 @@
       line-height: 1.8rem;
       font-weight: 400;
       color: $color-grey;
+
       &::after {
         content: "";
-        background-image: url("./assets/Arrow Down.svg");
+        background-image: url("/assets/Arrow Down.svg");
         width: 22px;
         height: 22px;
         display: block;
@@ -78,6 +96,7 @@
         z-index: -1;
       }
     }
+
     .select-dropdown {
       display: none;
       position: absolute;
@@ -87,29 +106,39 @@
       border-radius: 6px;
       border: 1px solid $color-redish;
       overflow: hidden;
+
       li {
         font-size: 13px;
         padding: 10px 20px;
         cursor: pointer;
+
         &:hover {
           background-color: $color-light-grey;
         }
       }
+
+      &.open {
+        display: block;
+      }
     }
+
     &.open {
       .select-input::after {
         transform: rotate(180deg);
       }
+
       .select-dropdown {
         display: block;
       }
     }
   }
+
   .form-checkbox {
     .consent-text {
       padding-top: 4px;
     }
   }
+
   &-summary {
     width: 100%;
     margin-left: 20px;
@@ -120,6 +149,7 @@
       margin-left: 0;
       margin-top: 30px;
     }
+
     .summary-total,
     .list-item {
       box-shadow: 0px 3px 6px rgba(0, 0, 0, .16);
@@ -129,29 +159,38 @@
       color: $color-white;
       font-size: 0.875rem;
       display: none;
+
       &.open {
         display: flex;
+        justify-content: space-between;
       }
     }
+
     .summary-total {
       width: 50%;
       align-self: flex-end;
       margin-top: 22px;
       padding: 8px 20px;
       background-color: $color-primary;
+
       .total-price {
         font-size: 1.25rem;
         font-weight: 700;
       }
     }
+
     .list-item {
       padding: 6px 20px;
       background-color: $color-green;
       margin-bottom: 8px;
+
       .item {
         &-price {
-          font-weight: 700;
-          font-size: 1.125rem;
+          font-family: $font-secondary;
+          font-size: 1.4rem;
+          line-height: 1.9rem;
+          font-weight: 400;
+          color: $color-white;
         }
       }
     }
