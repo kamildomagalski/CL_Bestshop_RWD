@@ -79,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
         inputSelect.innerText = event.target.innerText
         selectList.classList.remove('open')
         sumFunction();
+        packagePrice === 0? totalElement.classList.add('open'): null;
       })
     })
   })
