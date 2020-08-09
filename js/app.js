@@ -30,30 +30,42 @@ document.addEventListener('DOMContentLoaded', function () {
   
   const totalPrice = totalElement.querySelector('.total-price');
   
+  let productValue= 0;
+  let orderValue=0;
+  let packagePrice=0;
+  let accountingPrice=0;
+  let terminalPrice=0;
   
+  const sumFunction= function (){
+    let summary = productValue + orderValue + packagePrice + accountingPrice + terminalPrice;
+    totalElement.classList.add('open')
+    summary===0 ? totalElement.classList.remove('open'): null;
+    return totalPrice.innerText = summary + '$';
+  }
   inputProducts.addEventListener('input', function () {
     const productPrice = 10.5
     summaryProducts.classList.add('open');
     productsItemCalc.innerText = `${inputProducts.value} * $${productPrice}`
-    const productValue = inputProducts.value * productPrice
+    productValue = inputProducts.value * productPrice
+    productValue===0 ? summaryProducts.classList.remove('open'): null;
     productItemPrice.innerText = productValue + '$'
-
+    sumFunction();
   })
-
   inputOrders.addEventListener('input', function () {
     const orderPrice = 5
     summaryOrders.classList.add('open');
     ordersItemCalc.innerText = `${inputOrders.value} * $${orderPrice}`
-    const orderValue = inputOrders.value * orderPrice
+    orderValue = inputOrders.value * orderPrice
+    orderValue===0 ? summaryOrders.classList.remove('open'): null;
     ordersItemPrice.innerText = orderValue + '$'
+    totalPrice.innerText = orderValue;
+    sumFunction();
   })
-  
   inputSelect.addEventListener('click', function (event) {
     selectList.classList.toggle('open');
     Array.from(selectList.children).forEach(function (el) {
       el.addEventListener('click', function (event) {
         
-        let packagePrice;
         if (event.target.innerText === 'Professional') {
           packagePrice = 25
         } else if (event.target.innerText === 'Premium') {
@@ -66,23 +78,21 @@ document.addEventListener('DOMContentLoaded', function () {
         packageItemPrice.innerText = packagePrice.innerText = packagePrice + '$'
         inputSelect.innerText = event.target.innerText
         selectList.classList.remove('open')
+        sumFunction();
       })
     })
   })
-  
   checkboxAccounting.addEventListener('change', function () {
-    const accountingPrice = 15
     summaryAccounting.classList.toggle('open')
+    checkboxAccounting.checked ? accountingPrice = 15 : accountingPrice = 0;
     accountingItemPrice.innerText = accountingPrice + '$'
+    sumFunction()
   })
-  
   checkboxTerminal.addEventListener('change', function () {
-    const terminalPrice = 5
+    terminalPrice = 5
     summaryTerminal.classList.toggle('open')
     terminalItemPrice.innerText = terminalPrice + '$'
-    
+    checkboxTerminal.checked ? terminalPrice = 15 : terminalPrice = 0;
+    sumFunction();
   })
-
-  totalElement.classList.add('open')
-  
 })
